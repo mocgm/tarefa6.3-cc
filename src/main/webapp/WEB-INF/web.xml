@@ -35,15 +35,15 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>Resource Servlet</servlet-name>
-        <servlet-class>com.icesoft.faces.webapp.CompatResourceServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Resource Servlet</servlet-name>
-        <url-pattern>/xmlhttp/*</url-pattern>
-    </servlet-mapping>
+<servlet>
+    <servlet-name>Resource Servlet</servlet-name>
+    <servlet-class>com.icesoft.faces.webapp.CompatResourceServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Resource Servlet</servlet-name>
+    <url-pattern>/xmlhttp/*</url-pattern>
+</servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>
@@ -58,15 +58,7 @@
             <description>Formulário de inscrição</description>
             <url-pattern>/inscricao.xhtml</url-pattern>
         </web-resource-collection>
-        <auth-constraint>
-            <description>Acesso restrito</description>
-            <role-name>*</role-name>
-        </auth-constraint>
     </security-constraint>
-    <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>Exemplos Web</realm-name>
-    </login-config>
     <security-role>
         <description>Administradores</description>
         <role-name>admin</role-name>

@@ -5,7 +5,6 @@
     <non-jta-data-source>java:/comp/env/jdbc/exemplo-jsf</non-jta-data-source>
     <class>inscricao.persistence.entity.Idioma</class>
     <class>inscricao.persistence.entity.Candidato</class>
-    <class>inscricao.persistence.entity.ClientePeriodo</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
