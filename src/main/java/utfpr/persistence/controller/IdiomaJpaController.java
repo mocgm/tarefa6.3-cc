@@ -5,6 +5,7 @@
 package utfpr.persistence.controller;
 
 import inscricao.persistence.entity.Idioma;
+import inscricao.persistence.entity.Idioma_;
 //import inscricao.persistence.entity.Idioma_;
 import java.util.List;
 import javax.persistence.EntityManager;
