@@ -12,7 +12,8 @@
     <ui:define name="content">
         <ice:form>
             <comps:login usuario="" senha="" layoutVertical="false"/><br/>
-            <ice:commandButton value="Entrar"/>
+            <ice:commandButton value="Cadastrar candidato" action="inscricao?faces-redirect=true"/>
+            <ice:commandButton value="Visualizar candidatos" action="tabelaCandidatos?faces-redirect=true" style="margin-top: 1em"/>
         </ice:form>
     </ui:define>
 

@@ -7,9 +7,9 @@
             maxIdle="3" 
             maxWait="10000" 
             name="jdbc/exemplo-jsf" 
-            password="aluno01" 
+            password="admin" 
             removeAbandoned="true" 
             type="javax.sql.DataSource" 
-            url="jdbc:postgresql://dev.ct.utfpr.edu.br/inscricao" 
-            username="aluno01"/>
+            url="jdbc:postgresql://192.168.25.43/inscricao" 
+            username="postgres"/>
 </Context>

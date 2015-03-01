@@ -5,6 +5,7 @@ import inscricao.persistence.entity.Idioma;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -30,7 +31,16 @@ public class InscricaoBean extends PageBean {
     private boolean informativo;
     private boolean correio;
     private boolean email;
+    private int codigoIdiomaFiltro = -1;
 
+    public int getCodigoIdiomaFiltro() {
+        return codigoIdiomaFiltro;
+    }
+
+    public void setCodigoIdiomaFiltro(int codigoIdiomaFiltro) {
+        this.codigoIdiomaFiltro = codigoIdiomaFiltro;
+    }
+            
     public Candidato getCandidato() {
         return candidato;
     }
@@ -60,6 +70,22 @@ public class InscricaoBean extends PageBean {
             log("Lista de idiomas", e);
         }
         return idiomas;
+    }
+    
+    public List<Candidato> getCandidatos() {  
+        List<Candidato> candidatos;
+        try {
+            CandidatoJpaController cjc = new CandidatoJpaController();
+            if (codigoIdiomaFiltro == -1) //mostrar candidatos cadastrados em qualquer idioma
+                candidatos = cjc.findAll();
+            else
+                candidatos = cjc.findByIdioma(new Idioma(codigoIdiomaFiltro));
+        }
+        catch (Exception e) {
+              candidatos = new ArrayList<>(0);
+              log("Lista de candidatos", e);
+        }                
+        return candidatos;        
     }
 
     public boolean isInformativo() {
@@ -114,6 +140,7 @@ public class InscricaoBean extends PageBean {
         EntityManager em = ctl.getEntityManager();
         try {
             if (validaCandidato()) {
+                candidato.setDatahora(new Date());
                 em.getTransaction().begin();
                 em.persist(candidato);
                 em.getTransaction().commit();
@@ -121,7 +148,7 @@ public class InscricaoBean extends PageBean {
             } else {
                 error("Este CPF já está inscrito");
             }
-            linkGRUVisivel = true;
+            //linkGRUVisivel = true;
         } catch (Exception e) {
             log("Incrição", e);
             error("Não foi possível completar a operação");
@@ -129,4 +156,14 @@ public class InscricaoBean extends PageBean {
             em.close();
         }
     }
+    
+    public String aplicarFiltroAction() {
+        return "tabelaCandidatos.xhtml";
+    }
+    
+    public String removerFiltroAction() {
+        codigoIdiomaFiltro = -1;
+        return "tabelaCandidatos.xhtml";
+    }
+    
 }

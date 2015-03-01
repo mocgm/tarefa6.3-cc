@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -43,6 +44,17 @@ public class CandidatoJpaController extends JpaController {
                 "select Candidato c from Candidato where c.idioma.codigo = :idioma",
                 Candidato.class);
             q.setParameter("idioma", idioma);
+            return q.getResultList();
+        } finally {
+            if (em != null) em.close();
+        }
+    }
+    
+    public List<Candidato> findAll() {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            TypedQuery<Candidato> q = em.createNamedQuery("Candidato.findAll", Candidato.class);
             return q.getResultList();
         } finally {
             if (em != null) em.close();

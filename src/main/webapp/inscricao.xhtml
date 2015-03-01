@@ -32,7 +32,7 @@
     <ui:define name="javascript">
     </ui:define>
 
-    <ui:define name="content">
+    <ui:define name="content">        
         <ice:form>
             <div class="titulo-form">FICHA DE INSCRIÇÃO</div>
             <ice:panelGroup style="text-align: left; margin-bottom: 10px;">
@@ -115,7 +115,7 @@
                                             partialSubmit="true"/>
                 <ice:outputLabel for="infoemail" value="e-mail" style="width: 100px"/>
             </ice:panelGroup>
-            <ice:commandButton value="Confirmar Inscrição" action="#{inscricaoBean.inscricaoAction}" style="margin-top: 1em"/>
+            <ice:commandButton value="Confirmar Inscrição" action="#{inscricaoBean.inscricaoAction}" style="margin-top: 1em"/>            
             <ice:panelGroup>
                 <ice:outputLink value="http://consulta.tesouro.fazenda.gov.br/gru/gerarHTML.asp" target="_blank" rendered="#{inscricaoBean.linkGRUVisivel}">
                     <ice:outputText value="Gerar GRU para Pagamento"/>
@@ -138,7 +138,6 @@
                 </ice:outputLink>
             </ice:panelGroup>
             <ice:messages/>
-        </ice:form>
+        </ice:form>        
     </ui:define>
-
 </ui:composition>

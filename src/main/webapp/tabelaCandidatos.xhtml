@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:ice="http://www.icesoft.com/icefaces/component"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/layout.xhtml">
+
+    <ui:define name="styles">
+        <link href="./css/inscricao.css" rel="stylesheet" type="text/css" />
+    </ui:define>
+
+    <ui:define name="metadata">
+    </ui:define>
+
+    <ui:define name="javascript">
+    </ui:define>
+
+    <ui:define name="content">
+        <ice:form>
+            <div class="titulo-form">CANDIDATOS INSCRITOS</div>
+            <ice:outputLabel for="idioma" value="Filtrar resultados por idioma: "/>
+            <ice:selectOneMenu id="idioma" value="#{inscricaoBean.codigoIdiomaFiltro}" style="width:12em" styleClass="ui-selectonemenu">
+                    <f:selectItems value="#{inscricaoBean.idiomas}" var="i" itemValue="#{i.codigo}" itemLabel="#{i.descricao}"/>
+            </ice:selectOneMenu>
+            <h:commandButton value="Aplicar filtro" action="#{inscricaoBean.aplicarFiltroAction}"/>            
+            <h:commandButton value="Remover filtro" action="#{inscricaoBean.removerFiltroAction}"/>
+            <ice:dataTable id="candidatos"             
+             summary="Candidatos inscritos"
+             value="#{inscricaoBean.candidatos}"
+             border="1"
+             var="item">
+                <ice:column>
+                    <f:facet name="header">
+                        <ice:outputText value="CPF" />
+                    </f:facet>
+                    <ice:outputText id="cpf"                      
+                                 value="#{item.cpf}"
+                                 title="CPF">            
+                    </ice:outputText>
+                </ice:column>
+                <ice:column>
+                    <f:facet name="header">
+                        <ice:outputText value="Nome" />
+                    </f:facet>
+                    <ice:outputText id="nome"                      
+                                  value="#{item.nome}"
+                                title="Nome">            
+                    </ice:outputText>
+                </ice:column>  
+                <ice:column>
+                    <f:facet name="header">
+                        <ice:outputText value="Cidade" />
+                    </f:facet>
+                    <ice:outputText id="cidade"                      
+                                  value="#{item.cidade}"
+                                title="Cidade">            
+                    </ice:outputText>
+                </ice:column>
+                <ice:column>
+                    <f:facet name="header">
+                        <ice:outputText value="Estado" />
+                    </f:facet>
+                    <ice:outputText id="estado"                      
+                                  value="#{item.estado}"
+                                title="Estado">            
+                    </ice:outputText>
+                </ice:column>                  
+                <ice:column>
+                    <f:facet name="header">
+                        <ice:outputText value="Idioma" />
+                    </f:facet>
+                    <ice:outputText id="idioma"                      
+                                    value="#{item.idioma.codigo}"
+                                title="Idioma">            
+                    </ice:outputText>
+                </ice:column>
+            </ice:dataTable>
+            <h:commandButton value="Voltar" action="login?faces-redirect=true"/>            
+            <ice:messages/>
+        </ice:form>
+    </ui:define>
+
+</ui:composition>

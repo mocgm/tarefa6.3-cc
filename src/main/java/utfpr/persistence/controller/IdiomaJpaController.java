@@ -5,7 +5,7 @@
 package utfpr.persistence.controller;
 
 import inscricao.persistence.entity.Idioma;
-import inscricao.persistence.entity.Idioma_;
+//import inscricao.persistence.entity.Idioma_;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -29,7 +29,7 @@ public class IdiomaJpaController extends JpaController {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Idioma> cq = cb.createQuery(Idioma.class);
             Root<Idioma> rt = cq.from(Idioma.class);
-            cq.where(cb.equal(rt.get(Idioma_.codigo), 1));
+            //cq.where(cb.equal(rt.get(Idioma_.codigo), 1));
             TypedQuery<Idioma> q = em.createQuery(cq);
             return q.getResultList();
         } finally {
