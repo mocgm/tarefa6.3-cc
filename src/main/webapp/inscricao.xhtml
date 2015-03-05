@@ -5,6 +5,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ice="http://www.icesoft.com/icefaces/component"
                 xmlns:ace="http://www.icefaces.org/icefaces/components"
+                xmlns:comps="http://java.sun.com/jsf/composite/util"
                 template="./WEB-INF/templates/layout.xhtml">
 
     <ui:define name="styles">
@@ -40,13 +41,14 @@
                 <ice:selectOneMenu id="idioma" value="#{inscricaoBean.candidato.idioma.codigo}" style="width:12em" styleClass="ui-selectonemenu">
                     <f:selectItems value="#{inscricaoBean.idiomas}" var="i" itemValue="#{i.codigo}" itemLabel="#{i.descricao}"/>
                 </ice:selectOneMenu>
-                <ice:panelGroup>
-                    <ice:outputLabel for="cpf" value="CPF"/>
+                <ice:panelGroup>                    
+                    <!-- <ice:outputLabel for="cpf" value="CPF"/>
                     <ace:maskedEntry id="cpf" value="#{inscricaoBean.candidato.cpf}"  mask="999999999-99"
                                      label="CPF" size="15" required="true">
                         <f:validator validatorId="CPFValidator"/>
                         <f:converter converterId="CPFConverter"/>
-                    </ace:maskedEntry>
+                    </ace:maskedEntry> -->
+                    <comps:entradaCPF valueCPF="#{inscricaoBean.candidato.cpf}" tipoMascara="999999999-99"/>
                     <ice:outputLabel for="rg" value="RG"/>
                     <ice:inputText id="rg" value="#{inscricaoBean.candidato.rg}" size="25"
                          styleClass="ui-inputfield" label="RG" maxlength="20" required="true"/>
@@ -70,12 +72,13 @@
                             styleClass="ui-inputfield" label="Estado" maxlength="2" required="true"/>
                 </ice:panelGroup>
                 <ice:panelGroup>
-                    <ice:outputLabel for="cep" value="CEP"/>
+                    <!-- <ice:outputLabel for="cep" value="CEP"/>
                     <ace:maskedEntry id="cep" value="#{inscricaoBean.candidato.cep}" mask="99999-999"
                                      label="CEP" size="10" required="true">
                         <f:validator validatorId="CEPValidator"/>
                         <f:converter converterId="CEPConverter"/>
-                    </ace:maskedEntry>
+                    </ace:maskedEntry> -->
+                    <comps:entradaCEP valueCEP="#{inscricaoBean.candidato.cep}" tipoMascara="99999-999" />
                     <ice:outputLabel for="bairro" value="Bairro"/>
                     <ice:inputText id="bairro" value="#{inscricaoBean.candidato.bairro}" size="30"
                             styleClass="ui-inputfield" label="Bairro" maxlength="50"/>

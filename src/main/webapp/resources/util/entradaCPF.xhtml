@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:cc="http://java.sun.com/jsf/composite">
+
+    <cc:interface>
+        <cc:attribute name="labelCPF" default="CPF:" required="false"/>
+        <cc:attribute name="valueCPF" required="true"/>        
+        <cc:attribute name="tipoMascara" required="true" />
+    </cc:interface>
+
+    <cc:implementation xmlns="http://www.w3.org/1999/xhtml"
+                       xmlns:f="http://java.sun.com/jsf/core"
+                       xmlns:ice="http://www.icesoft.com/icefaces/component"
+                       xmlns:ace="http://www.icefaces.org/icefaces/components"
+                       xmlns:cc="http://java.sun.com/jsf/composite">
+        <ice:outputLabel for="cpfInput" value="#{cc.attrs.labelCPF}*"/>
+        <ace:maskedEntry id="cpfInput" value="#{cc.attrs.valueCPF}" mask="#{cc.attrs.tipoMascara}"
+                         size="15" required="true">
+           <f:validator validatorId="CPFValidator"/>
+           <f:converter converterId="CPFConverter"/>
+       </ace:maskedEntry>
+    </cc:implementation>
+</html>
